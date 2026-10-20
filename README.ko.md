@@ -1,12 +1,12 @@
 # DeathGuider
 
-[English](README.md), [Korean](README.ko.md), [Japanese](README.ja.md)
+<!-- portfolio-languages -->
+[![English](https://ysl-ryudo.github.io/assets/diagrams/language-en.svg)](README.md) [![한국어 (현재 언어)](https://ysl-ryudo.github.io/assets/diagrams/language-ko-current.svg)](README.ko.md) [![日本語](https://ysl-ryudo.github.io/assets/diagrams/language-ja.svg)](README.ja.md)
+<!-- /portfolio-languages -->
 
 오투큐브 공동 제작 게임. 수감자 관리와 시설 운영, 전투 준비를 연결하는 시스템을 담당했습니다.
 
-**O2CUBE 팀 프로젝트**의 포트폴리오 문서용 포크입니다. 원본: [vliza321/DeathGuider](https://github.com/vliza321/DeathGuider). 원본 저장소와 기존 크레딧을 존중하며 **이영상(YSL-RyuDo)이 맡은 부분**을 설명합니다. 게임 전체의 단독 제작을 주장하지 않습니다.
-
-원본 main이 초기 상태여서 이 포크는 `0.23Ver`를 기본 브랜치로 사용합니다. 원본 브랜치와 개발 이력을 보존했고 원본 저장소에 변경이나 PR을 보내지 않았습니다.
+O2CUBE 팀 프로젝트. 원본 저장소: [vliza321/DeathGuider](https://github.com/vliza321/DeathGuider).
 
 | 프로젝트 정보 | 내용 |
 |---|---|
@@ -19,15 +19,21 @@
 
 [DeathGuider demo](https://www.youtube.com/watch?v=dwgntWQCBTk)
 
+## 게임에서 보는 구현
+
+[![수감자 후보 생성과 일일 수락 제한, 보유 명단을 연결한 모집 화면.](https://ysl-ryudo.github.io/assets/gameplay/deathguider-recruitment.webp)](https://ysl-ryudo.github.io/assets/gameplay/deathguider-recruitment.webp)
+
+수감자 후보 생성과 일일 수락 제한, 보유 명단을 연결한 모집 화면.
+
+[![파티 슬롯과 장비 선택, 던전 입장을 연결한 관리 화면.](https://ysl-ryudo.github.io/assets/gameplay/deathguider-party.webp)](https://ysl-ryudo.github.io/assets/gameplay/deathguider-party.webp)
+
+파티 슬롯과 장비 선택, 던전 입장을 연결한 관리 화면.
+
 ## 게임 전체에서 맡은 구현
 
-공동 게임에서 경영 시스템과 전투 준비를 중심으로 작업했습니다. 포크에는 원본 프로젝트와 팀의 작업을 유지합니다. 탐사 전체와 전투 AI, 날짜 시스템, 다른 팀원의 씬을 제 작업으로 소개하지 않습니다.
+유닛 모집과 보관, 훈련과 회복 및 침식, 연구와 장비 제작, 탐사 전 파티와 장비 준비를 담당했습니다.
 
-**플레이 흐름**
-
-유닛 모집 → 시설과 자원 배분 → 훈련과 회복, 장비 개발 → 파티 준비 → 탐사 진입
-
-소스 링크는 확인한 버전에 고정하고 기여 링크는 제가 작성한 병합 외 변경을 가리킵니다. 공동 파일을 연결했다고 단독 작성이라는 뜻은 아닙니다. 비공개 소스는 저장소 접근 권한이 필요합니다.
+[![담당 구현 흐름](https://ysl-ryudo.github.io/assets/diagrams/deathguider-flow-ko.svg)](https://ysl-ryudo.github.io/assets/diagrams/deathguider-flow-ko.svg)
 
 ### 모집과 유닛 보관
 
@@ -53,18 +59,6 @@
 
 [BattleReadySystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/BattleReadySystem.cs), [내 변경 f8015e0](https://github.com/YSL-RyuDo/DeathGuider/commit/f8015e039aa7e33d9e8355f3d09cd90c786a04c8)
 
-## 내 기여: 경영 시스템
-
-버스, 수감자 관리, 수감자 목록, 보관과 UI, 데이터 흐름.
-
-날짜 진행과 경영 상태 갱신.
-
-훈련, 회복, 침식과 시설 시스템, 연구소, 대장장이 관련 작업.
-
-전투 준비: 이용 가능한 인원, 장비 선택, 빈 파티 입장 방지와 경영 데이터의 준비 UI 연결.
-
-작성한 커밋과 `Assets/Script/MainScene/` 코드로 확인되는 담당 범위입니다. 전투 AI, 절차적 맵과 다른 팀원의 시스템을 제 기여로 포함하지 않습니다.
-
 ## Evidence / 근거 / 根拠
 
 [Management / 경영 / 経営](https://github.com/vliza321/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc)
@@ -83,8 +77,6 @@
 
 ## 코드의 동작과 구현 방식을 택한 이유
 
-확인한 구현이 어떤 제약을 다루며 어떤 장단점이 생기는지 설명합니다. 설계 효과에 대한 설명은 코드 분석이며, 비교한 모든 대안을 당시 직접 구현했다는 뜻은 아닙니다. 기여 링크는 공동 프로젝트 안의 담당 변경을 가리키고 소스 링크는 기존 접근 권한을 유지합니다.
-
 ### 시설 화면과 유닛 상태를 연결하는 방식
 
 **구현 흐름**
@@ -101,13 +93,13 @@
 
 **장단점과 검증 범위**
 
-유닛 데이터를 넓게 순회할수록 소유자와 적용 대상 조건을 주의해야 하고, 숫자로 표현한 활동 코드는 규칙을 읽기 어렵게 만듭니다. 이는 검토할 지점이며 기존 구현이 완성된 범용 상태 머신이라는 뜻은 아닙니다. 공동 DateSystem은 팀원의 작성 코드이고 제 담당은 시설과 진행의 연동입니다.
+유닛 데이터를 순회할 때 소유자와 활동 상태를 걸러야 합니다. 숫자로 표현한 활동 코드는 규칙을 읽기 어렵게 만들며, 시설 진행 시점을 게임의 날짜 변경 이벤트와 맞춰야 합니다.
 
 [DeathGuider ee560502](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc), [DeathGuider 5593c51c](https://github.com/YSL-RyuDo/DeathGuider/commit/5593c51c1824aed0503cf93ef2033e0e325a2e48)
 
 ## 프로젝트 확인
 
-[ProjectVersion.txt](ProjectSettings/ProjectVersion.txt)의 Unity 버전을 사용하세요. `0.23Ver`의 경영 씬과 `Assets/Script/MainScene/Lobby Test/`부터 살펴볼 수 있습니다. 이번 문서 작업은 새 빌드, 플레이 검증을 뜻하지 않습니다. 포크 소유가 팀 코드, 에셋의 저작자나 권리를 이전하지 않습니다. 기존 개발 이력과 크레딧을 유지합니다.
+[ProjectVersion.txt](ProjectSettings/ProjectVersion.txt)의 Unity 버전을 사용하세요. `0.23Ver`의 경영 씬과 `Assets/Script/MainScene/Lobby Test/`부터 살펴볼 수 있습니다.
 
 ## 관련 저장소
 

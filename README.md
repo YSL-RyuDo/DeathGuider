@@ -1,12 +1,12 @@
 # DeathGuider
 
-[English](README.md), [Korean](README.ko.md), [Japanese](README.ja.md)
+<!-- portfolio-languages -->
+[![English (current)](https://ysl-ryudo.github.io/assets/diagrams/language-en-current.svg)](README.md) [![한국어](https://ysl-ryudo.github.io/assets/diagrams/language-ko.svg)](README.ko.md) [![日本語](https://ysl-ryudo.github.io/assets/diagrams/language-ja.svg)](README.ja.md)
+<!-- /portfolio-languages -->
 
 An O2CUBE team game. My work connects prisoner management, facilities and battle preparation.
 
-A portfolio documentation fork of the **O2CUBE team project**. Original project: [vliza321/DeathGuider](https://github.com/vliza321/DeathGuider). The original repository and its credits remain authoritative. This fork documents **Young-Sang Lee (YSL-RyuDo)'s contributions**, not sole authorship of the game.
-
-The fork uses `0.23Ver` as its default branch because the original `main` contains an early snapshot. Upstream branches and development history are preserved; no pull request or change was sent to the original repository.
+O2CUBE team project. Original repository: [vliza321/DeathGuider](https://github.com/vliza321/DeathGuider).
 
 | Project | Details |
 |---|---|
@@ -19,15 +19,21 @@ The fork uses `0.23Ver` as its default branch because the original `main` contai
 
 [DeathGuider demo](https://www.youtube.com/watch?v=dwgntWQCBTk)
 
+## Inside the game
+
+[![Recruitment connects generated prisoner candidates, daily limits and the roster.](https://ysl-ryudo.github.io/assets/gameplay/deathguider-recruitment.webp)](https://ysl-ryudo.github.io/assets/gameplay/deathguider-recruitment.webp)
+
+Recruitment connects generated prisoner candidates, daily limits and the roster.
+
+[![The management flow connects party slots, equipment selection and dungeon entry.](https://ysl-ryudo.github.io/assets/gameplay/deathguider-party.webp)](https://ysl-ryudo.github.io/assets/gameplay/deathguider-party.webp)
+
+The management flow connects party slots, equipment selection and dungeon entry.
+
 ## What I built across the game
 
-My work is concentrated in management systems and battle preparation within a shared game. The fork preserves the upstream project. I do not attribute the whole exploration, combat AI, date system or other members' scenes to myself.
+I worked on unit recruitment and storage, training, recovery and erosion, research and smithing, and party/equipment preparation before exploration.
 
-**Player flow**
-
-Recruit units → allocate facilities and resources → train, recover and develop equipment → prepare a party → enter exploration
-
-Source links pin the inspected revision; contribution links identify my non-merge changes. Shared-file links do not imply sole authorship. Private source requires repository access.
+[![My implementation flow](https://ysl-ryudo.github.io/assets/diagrams/deathguider-flow-en.svg)](https://ysl-ryudo.github.io/assets/diagrams/deathguider-flow-en.svg)
 
 ### Recruitment and unit storage
 
@@ -53,18 +59,6 @@ Worked on selecting battle units and equipment and preventing an empty party fro
 
 [BattleReadySystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/BattleReadySystem.cs), [My change f8015e0](https://github.com/YSL-RyuDo/DeathGuider/commit/f8015e039aa7e33d9e8355f3d09cd90c786a04c8)
 
-## My contribution: management systems
-
-Bus/prisoner management, prisoner lists, storage and their UI/data flow.
-
-Day progression and management-state updates.
-
-Training, recovery, erosion and facility-related systems, including research/smithing work.
-
-Battle preparation: selecting available units/equipment, preventing invalid empty-party entry, and connecting management state to preparation UI.
-
-These responsibilities are supported by authored commits and the `Assets/Script/MainScene/` code. Combat AI, procedural maps and all other teammates' systems are not included in this contribution claim.
-
 ## Evidence / 근거 / 根拠
 
 [Management / 경영 / 経営](https://github.com/vliza321/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc)
@@ -83,8 +77,6 @@ My contribution covers bus/prisoner and storage management, training/recovery/er
 
 ## How the code works and why it is structured this way
 
-These notes connect the inspected implementation to the constraints it addresses and its tradeoffs. Explanations of design consequences are code analysis, not a claim that every alternative was prototyped. Contribution links identify my changes within team projects; source links retain their original access permissions.
-
 ### Facility progression uses persistent unit state
 
 **Implementation**
@@ -101,13 +93,13 @@ Driving progression from occupied facility slots is local and easy to follow, bu
 
 **Tradeoffs and verification**
 
-A wider unit-data iteration needs careful ownership and eligibility checks, and numeric activity codes make rules harder to read. These are review points, not a claim that the legacy implementation is a finished generic state machine. The shared DateSystem was authored by a teammate; my contribution is facility/progression integration, not ownership of that entire system.
+Scanning unit data requires owner and activity filters. Numeric activity codes make the rules harder to read, and facility progress must stay aligned with the game's date-advance events.
 
 [DeathGuider ee560502](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc), [DeathGuider 5593c51c](https://github.com/YSL-RyuDo/DeathGuider/commit/5593c51c1824aed0503cf93ef2033e0e325a2e48)
 
 ## Inspecting the project
 
-Open with the Unity version in [ProjectVersion.txt](ProjectSettings/ProjectVersion.txt). Start by inspecting the management scenes and `Assets/Script/MainScene/Lobby Test/` on `0.23Ver`. This documentation update does not certify a new build or playtest. Fork ownership does not transfer authorship or rights in the team's code/assets. Existing source history and credits are preserved.
+Open with the Unity version in [ProjectVersion.txt](ProjectSettings/ProjectVersion.txt). Start by inspecting the management scenes and `Assets/Script/MainScene/Lobby Test/` on `0.23Ver`.
 
 ## Related repositories
 

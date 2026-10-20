@@ -1,12 +1,12 @@
 # DeathGuider
 
-[English](README.md), [Korean](README.ko.md), [Japanese](README.ja.md)
+<!-- portfolio-languages -->
+[![English](https://ysl-ryudo.github.io/assets/diagrams/language-en.svg)](README.md) [![한국어](https://ysl-ryudo.github.io/assets/diagrams/language-ko.svg)](README.ko.md) [![日本語（選択中）](https://ysl-ryudo.github.io/assets/diagrams/language-ja-current.svg)](README.ja.md)
+<!-- /portfolio-languages -->
 
 O2CUBEの共同制作ゲーム。囚人管理、施設運営、戦闘準備をつなぐシステムを担当しました。
 
-**O2CUBEチームプロジェクト**のポートフォリオ文書用フォークです。原本：[vliza321/DeathGuider](https://github.com/vliza321/DeathGuider)。元のリポジトリとクレジットを尊重し、**Young-Sang Lee（YSL-RyuDo）の担当範囲**を説明します。ゲーム全体の単独制作は主張しません。
-
-原本mainが初期状態のため、このフォークのデフォルトは`0.23Ver`です。元のブランチと履歴を保持し、原本への変更・PRは送っていません。
+O2CUBEチームプロジェクト。元のリポジトリ：[vliza321/DeathGuider](https://github.com/vliza321/DeathGuider).
 
 | プロジェクト情報 | 内容 |
 |---|---|
@@ -19,15 +19,21 @@ O2CUBEの共同制作ゲーム。囚人管理、施設運営、戦闘準備を�
 
 [DeathGuider demo](https://www.youtube.com/watch?v=dwgntWQCBTk)
 
+## ゲーム内の実装
+
+[![囚人候補の生成、1日の受け入れ制限、名簿をつなぐ募集画面。](https://ysl-ryudo.github.io/assets/gameplay/deathguider-recruitment.webp)](https://ysl-ryudo.github.io/assets/gameplay/deathguider-recruitment.webp)
+
+囚人候補の生成、1日の受け入れ制限、名簿をつなぐ募集画面。
+
+[![パーティ枠、装備選択、ダンジョン入場をつなぐ管理画面。](https://ysl-ryudo.github.io/assets/gameplay/deathguider-party.webp)](https://ysl-ryudo.github.io/assets/gameplay/deathguider-party.webp)
+
+パーティ枠、装備選択、ダンジョン入場をつなぐ管理画面。
+
 ## ゲーム全体で担当した実装
 
-共同ゲームで管理システムと戦闘準備を中心に担当しました。フォークには原作とチームの成果を保持します。探索全体、戦闘AI、日付システム、他メンバーのシーンを自分の成果とはしません。
+ユニットの募集と保管、訓練と回復・侵食、研究と装備制作、探索前のパーティーと装備準備を担当しました。
 
-**プレイの流れ**
-
-ユニット募集 → 施設・資源配分 → 訓練・回復・装備開発 → パーティー準備 → 探索開始
-
-ソースリンクは確認した版に固定し、担当リンクは自分のマージ以外の変更を示します。共同ファイルは単独著作を意味しません。非公開ソースには閲覧権限が必要です。
+[![担当実装の流れ](https://ysl-ryudo.github.io/assets/diagrams/deathguider-flow-ja.svg)](https://ysl-ryudo.github.io/assets/diagrams/deathguider-flow-ja.svg)
 
 ### 募集とユニット保管
 
@@ -53,18 +59,6 @@ O2CUBEの共同制作ゲーム。囚人管理、施設運営、戦闘準備を�
 
 [BattleReadySystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/BattleReadySystem.cs), [担当変更 f8015e0](https://github.com/YSL-RyuDo/DeathGuider/commit/f8015e039aa7e33d9e8355f3d09cd90c786a04c8)
 
-## 担当範囲：経営システム
-
-バス・囚人管理、一覧・保管、UIとデータの連携。
-
-日付進行と経営状態の更新。
-
-訓練・回復・侵食、研究所・鍛冶を含む施設関連システム。
-
-戦闘準備：利用可能な人員・装備の選択、空パーティーでの入場防止、経営データと準備UIの接続。
-
-本人のコミットと`Assets/Script/MainScene/`コードに基づく範囲です。戦闘AI、手続き型マップ、他のメンバーのシステムは担当範囲に含めません。
-
 ## Evidence / 근거 / 根拠
 
 [Management / 경영 / 経営](https://github.com/vliza321/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc)
@@ -83,8 +77,6 @@ O2CUBEの共同制作ゲーム。囚人管理、施設運営、戦闘準備を�
 
 ## コードの動作と実装構造の理由
 
-確認した実装が扱う制約と利点・代償を説明します。設計効果の説明はコード分析であり、比較する全代案を当時試作したという意味ではありません。担当リンクは共同制作内の変更を示し、ソースの閲覧権限は維持します。
-
 ### 施設画面とユニット状態をつなぐ方法
 
 **実装の流れ**
@@ -101,13 +93,13 @@ O2CUBEの共同制作ゲーム。囚人管理、施設運営、戦闘準備を�
 
 **利点・代償と検証範囲**
 
-広いユニット集合を走査するほど所有者と適用条件の確認が重要になり、数値の活動コードは規則を読みにくくします。これはレビュー点であり、完成した汎用状態機械という意味ではありません。共有DateSystemはチームメンバーの実装で、私の担当は施設と進行の連携です。
+ユニット走査には所有者と活動状態の絞り込みが必要です。数値の活動コードは規則を読みにくくし、施設進行のタイミングを日付変更イベントに合わせる必要があります。
 
 [DeathGuider ee560502](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc), [DeathGuider 5593c51c](https://github.com/YSL-RyuDo/DeathGuider/commit/5593c51c1824aed0503cf93ef2033e0e325a2e48)
 
 ## プロジェクトの確認
 
-[ProjectVersion.txt](ProjectSettings/ProjectVersion.txt)のUnity版を使用してください。`0.23Ver`の経営シーンと`Assets/Script/MainScene/Lobby Test/`から確認できます。今回の文書作業は新たなビルド・プレイ検証ではありません。フォーク所有はチームのコード・素材の著作者や権利を移転するものではなく、元の履歴・クレジットを保持します。
+[ProjectVersion.txt](ProjectSettings/ProjectVersion.txt)のUnity版を使用してください。`0.23Ver`の経営シーンと`Assets/Script/MainScene/Lobby Test/`から確認できます。
 
 ## 関連リポジトリ
 
