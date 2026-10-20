@@ -2,9 +2,40 @@
 
 [English](README.md) · [Korean](README.ko.md) · [Japanese](README.ja.md)
 
+**C# · Unity · O2CUBE** · Contribution fork
+
+[Explore the case](https://ysl-ryudo.github.io/en/work/deathguider/) · [Portfolio](https://ysl-ryudo.github.io/en/)
+
+
 A portfolio documentation fork of the **O2CUBE team project**. Original project: [vliza321/DeathGuider](https://github.com/vliza321/DeathGuider). The original repository and its credits remain authoritative. This fork documents **Young-Sang Lee (YSL-RyuDo)'s contributions**, not sole authorship of the game.
 
 The fork uses `0.23Ver` as its default branch because the original `main` contains an early snapshot. Upstream branches and development history are preserved; no pull request or change was sent to the original repository.
+
+## The engineering problem
+
+A management game needs prisoner state, facilities, day progression and battle preparation to agree. The preparation screen also needs to reject an empty party before entering battle.
+
+## My implementation
+
+My contribution covers bus/prisoner and storage management, training/recovery/erosion, research and smithing, and unit/equipment selection for battle preparation. Authored commits identify these changes within the shared project.
+
+### Implementation overview · conceptual flow
+
+```mermaid
+flowchart LR
+    N0["Prisoner / storage"] --> N1
+    N1["Facilities / day"] --> N2
+    N2["Units / equipment"] --> N3
+    N3["Battle preparation"]
+```
+
+### Development videos
+
+[![DeathGuider — DeathGuider demo](https://i.ytimg.com/vi/dwgntWQCBTk/hqdefault.jpg)](https://www.youtube.com/watch?v=dwgntWQCBTk)
+
+- [DeathGuider demo](https://www.youtube.com/watch?v=dwgntWQCBTk)
+
+Recorded project demonstrations; the contribution section below identifies my work within the game.
 
 ## My contribution: management systems
 
@@ -25,3 +56,7 @@ These responsibilities are supported by authored commits and the `Assets/Script/
 ## Inspecting the project
 
 Open with the Unity version in [ProjectVersion.txt](ProjectSettings/ProjectVersion.txt). Start by inspecting the management scenes and `Assets/Script/MainScene/Lobby Test/` on `0.23Ver`. This documentation update does not certify a new build or playtest. Fork ownership does not transfer authorship or rights in the team's code/assets. Existing source history and credits are preserved.
+
+## How to evaluate the work
+
+Start with the four linked contribution commits and MainScene management scripts on 0.23Ver. Combat AI and procedural map generation belong outside this contribution.
