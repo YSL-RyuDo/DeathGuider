@@ -1,41 +1,30 @@
-# DeathGuider — Team Contribution Portfolio
+# DeathGuider
 
 [English](README.md) · [Korean](README.ko.md) · [Japanese](README.ja.md)
 
+O2CUBEの共同制作ゲーム。囚人管理、施設運営、戦闘準備をつなぐシステムを担当しました。
+
 **C# · Unity · O2CUBE** · 担当記録フォーク
-
-[開発事例を見る](https://ysl-ryudo.github.io/ja/work/deathguider/) · [Portfolio](https://ysl-ryudo.github.io/ja/)
-
 
 **O2CUBEチームプロジェクト**のポートフォリオ文書用フォークです。原本：[vliza321/DeathGuider](https://github.com/vliza321/DeathGuider)。元のリポジトリとクレジットを尊重し、**Young-Sang Lee（YSL-RyuDo）の担当範囲**を説明します。ゲーム全体の単独制作は主張しません。
 
 原本mainが初期状態のため、このフォークのデフォルトは`0.23Ver`です。元のブランチと履歴を保持し、原本への変更・PRは送っていません。
 
-## 取り組んだ課題
+[開発事例を見る](https://ysl-ryudo.github.io/ja/work/deathguider/) · [Portfolio](https://ysl-ryudo.github.io/ja/)
 
-囚人の状態、施設、日付進行、戦闘準備を連携させる経営ゲームです。戦闘準備では空のパーティーによる入場を防ぐ必要があります。
+[DeathGuider](https://github.com/YSL-RyuDo/DeathGuider) (公開リポジトリ)
 
-## 担当した実装と設計
+## システム別の担当内容
 
-バス・囚人・保管管理、訓練・回復・侵食、研究所・鍛冶、戦闘準備時の人員・装備選択を担当しました。共同プロジェクト内の変更を本人作成コミットで示しています。
+| 領域 | 実装 |
+|---|---|
+| 経営 | 囚人・バス一覧と保管データ |
+| 進行 | 日数・訓練・回復・侵食・施設 |
+| 戦闘準備 | ユニット・装備選択と空パーティー入場防止 |
 
-### 実装概要 · 概念フロー
-
-```mermaid
-flowchart LR
-    N0["Prisoner / storage"] --> N1
-    N1["Facilities / day"] --> N2
-    N2["Units / equipment"] --> N3
-    N3["Battle preparation"]
-```
-
-### 開発デモ動画
-
-[![DeathGuider — DeathGuider demo](https://i.ytimg.com/vi/dwgntWQCBTk/hqdefault.jpg)](https://www.youtube.com/watch?v=dwgntWQCBTk)
+## 開発デモ動画
 
 - [DeathGuider demo](https://www.youtube.com/watch?v=dwgntWQCBTk)
-
-撮影時点のプロジェクトデモです。ゲーム内での担当作業は以下の担当範囲で示します。
 
 ## 担当範囲：経営システム
 
@@ -56,7 +45,3 @@ flowchart LR
 ## プロジェクトの確認
 
 [ProjectVersion.txt](ProjectSettings/ProjectVersion.txt)のUnity版を使用してください。`0.23Ver`の経営シーンと`Assets/Script/MainScene/Lobby Test/`から確認できます。今回の文書作業は新たなビルド・プレイ検証ではありません。フォーク所有はチームのコード・素材の著作者や権利を移転するものではなく、元の履歴・クレジットを保持します。
-
-## 実装の確認方法
-
-0.23Verの4つの担当コミットとMainSceneの経営スクリプトから確認できます。戦闘AIと手続き型マップ生成は担当範囲に含めていません。
