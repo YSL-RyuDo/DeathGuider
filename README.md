@@ -19,6 +19,40 @@ The fork uses `0.23Ver` as its default branch because the original `main` contai
 
 [DeathGuider demo](https://www.youtube.com/watch?v=dwgntWQCBTk)
 
+## What I built across the game
+
+My work is concentrated in management systems and battle preparation within a shared game. The fork preserves the upstream project. I do not attribute the whole exploration, combat AI, date system or other members' scenes to myself.
+
+**Player flow**
+
+Recruit units → allocate facilities and resources → train, recover and develop equipment → prepare a party → enter exploration
+
+Source links pin the inspected revision; contribution links identify my non-merge changes. Shared-file links do not imply sole authorship. Private source requires repository access.
+
+### Recruitment and unit storage
+
+Worked on randomized prisoner recruitment, bus-facing UI and unit storage/selection. These systems connect available units to the management screen and later party preparation.
+
+[BusRandomPrisoner.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Bus/BusRandomPrisoner.cs), [My change fc21ab5](https://github.com/YSL-RyuDo/DeathGuider/commit/fc21ab5eb4e66a8c14ed5de5e9a261ffbb7242f6), [StorageUI.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Floor/StorageUI.cs), [My change ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc)
+
+### Training, recovery and erosion
+
+Implemented and changed gym, health and erosion processing. Facility progression reads unit activity data; the detailed design note traces the move away from deriving progression only from occupied UI slots.
+
+[GYMSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/GYM/GYMSystem.cs), [My change ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc), [HealthSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Health/HealthSystem.cs), [My change ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc), [ErosionSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Erosion/ErosionSystem.cs), [My change ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc)
+
+### Research and smithing
+
+Worked on laboratory and smithing systems as part of the management loop. Their state and resource handling connects development choices to the equipment available before a battle.
+
+[LaboratorySystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Laboratory/LaboratorySystem.cs), [My change 4dc54c0](https://github.com/YSL-RyuDo/DeathGuider/commit/4dc54c0e285efdc18888b07019992ddc5fcfcdf2), [SmithSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Smith/SmithSystem.cs), [My change 4dc54c0](https://github.com/YSL-RyuDo/DeathGuider/commit/4dc54c0e285efdc18888b07019992ddc5fcfcdf2)
+
+### Party and equipment preparation
+
+Worked on selecting battle units and equipment and preventing an empty party from entering battle. This is the boundary between my management work and the team's exploration/gameplay systems.
+
+[BattleReadySystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/BattleReadySystem.cs), [My change f8015e0](https://github.com/YSL-RyuDo/DeathGuider/commit/f8015e039aa7e33d9e8355f3d09cd90c786a04c8)
+
 ## My contribution: management systems
 
 Bus/prisoner management, prisoner lists, storage and their UI/data flow.
@@ -46,12 +80,6 @@ These responsibilities are supported by authored commits and the `Assets/Script/
 A management game needs prisoner state, facilities, day progression and battle preparation to agree. The preparation screen also needs to reject an empty party before entering battle.
 
 My contribution covers bus/prisoner and storage management, training/recovery/erosion, research and smithing, and unit/equipment selection for battle preparation. Authored commits identify these changes within the shared project.
-
-| Area | Implementation |
-|---|---|
-| Management | Prisoner/bus lists and storage data |
-| Progression | Days, training, recovery, erosion and facilities |
-| Preparation | Unit/equipment selection with an empty-party entry guard |
 
 ## How the code works and why it is structured this way
 

@@ -19,6 +19,40 @@ O2CUBEの共同制作ゲーム。囚人管理、施設運営、戦闘準備を�
 
 [DeathGuider demo](https://www.youtube.com/watch?v=dwgntWQCBTk)
 
+## ゲーム全体で担当した実装
+
+共同ゲームで管理システムと戦闘準備を中心に担当しました。フォークには原作とチームの成果を保持します。探索全体、戦闘AI、日付システム、他メンバーのシーンを自分の成果とはしません。
+
+**プレイの流れ**
+
+ユニット募集 → 施設・資源配分 → 訓練・回復・装備開発 → パーティー準備 → 探索開始
+
+ソースリンクは確認した版に固定し、担当リンクは自分のマージ以外の変更を示します。共同ファイルは単独著作を意味しません。非公開ソースには閲覧権限が必要です。
+
+### 募集とユニット保管
+
+ランダムな囚人募集、バスUI、ユニット保管・選択を担当しました。募集ユニットを管理画面と後のパーティー準備につなぐシステムです。
+
+[BusRandomPrisoner.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Bus/BusRandomPrisoner.cs), [担当変更 fc21ab5](https://github.com/YSL-RyuDo/DeathGuider/commit/fc21ab5eb4e66a8c14ed5de5e9a261ffbb7242f6), [StorageUI.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Floor/StorageUI.cs), [担当変更 ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc)
+
+### 訓練、回復と侵食
+
+訓練、回復、侵食の処理を実装・変更しました。施設進行はユニットの活動データを参照します。UIスロットの占有だけから進行を導く構造の変更を後述します。
+
+[GYMSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/GYM/GYMSystem.cs), [担当変更 ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc), [HealthSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Health/HealthSystem.cs), [担当変更 ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc), [ErosionSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Erosion/ErosionSystem.cs), [担当変更 ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc)
+
+### 研究と鍛冶
+
+管理ループの研究所・鍛冶システムを担当しました。開発選択と資源・状態処理を、戦闘前に使える装備につなぎました。
+
+[LaboratorySystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Laboratory/LaboratorySystem.cs), [担当変更 4dc54c0](https://github.com/YSL-RyuDo/DeathGuider/commit/4dc54c0e285efdc18888b07019992ddc5fcfcdf2), [SmithSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Smith/SmithSystem.cs), [担当変更 4dc54c0](https://github.com/YSL-RyuDo/DeathGuider/commit/4dc54c0e285efdc18888b07019992ddc5fcfcdf2)
+
+### パーティーと装備の準備
+
+戦闘ユニット・装備選択と、空パーティーの戦闘開始防止を担当しました。自分の管理部分とチームの探索・戦闘をつなぐ境界です。
+
+[BattleReadySystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/BattleReadySystem.cs), [担当変更 f8015e0](https://github.com/YSL-RyuDo/DeathGuider/commit/f8015e039aa7e33d9e8355f3d09cd90c786a04c8)
+
 ## 担当範囲：経営システム
 
 バス・囚人管理、一覧・保管、UIとデータの連携。
@@ -46,12 +80,6 @@ O2CUBEの共同制作ゲーム。囚人管理、施設運営、戦闘準備を�
 囚人の状態、施設、日付進行、戦闘準備を連携させる経営ゲームです。戦闘準備では空のパーティーによる入場を防ぐ必要があります。
 
 バス・囚人・保管管理、訓練・回復・侵食、研究所・鍛冶、戦闘準備時の人員・装備選択を担当しました。共同プロジェクト内の変更を本人作成コミットで示しています。
-
-| 領域 | 実装 |
-|---|---|
-| 経営 | 囚人・バス一覧と保管データ |
-| 進行 | 日数・訓練・回復・侵食・施設 |
-| 戦闘準備 | ユニット・装備選択と空パーティー入場防止 |
 
 ## コードの動作と実装構造の理由
 

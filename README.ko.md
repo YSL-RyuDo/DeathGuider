@@ -19,6 +19,40 @@
 
 [DeathGuider demo](https://www.youtube.com/watch?v=dwgntWQCBTk)
 
+## 게임 전체에서 맡은 구현
+
+공동 게임에서 경영 시스템과 전투 준비를 중심으로 작업했습니다. 포크에는 원본 프로젝트와 팀의 작업을 유지합니다. 탐사 전체와 전투 AI, 날짜 시스템, 다른 팀원의 씬을 제 작업으로 소개하지 않습니다.
+
+**플레이 흐름**
+
+유닛 모집 → 시설과 자원 배분 → 훈련과 회복, 장비 개발 → 파티 준비 → 탐사 진입
+
+소스 링크는 확인한 버전에 고정하고 기여 링크는 제가 작성한 병합 외 변경을 가리킵니다. 공동 파일을 연결했다고 단독 작성이라는 뜻은 아닙니다. 비공개 소스는 저장소 접근 권한이 필요합니다.
+
+### 모집과 유닛 보관
+
+무작위 수감자 모집과 버스 UI, 유닛 보관과 선택을 작업했습니다. 모집한 유닛을 경영 화면과 이후의 파티 준비에 연결하는 시스템입니다.
+
+[BusRandomPrisoner.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Bus/BusRandomPrisoner.cs), [내 변경 fc21ab5](https://github.com/YSL-RyuDo/DeathGuider/commit/fc21ab5eb4e66a8c14ed5de5e9a261ffbb7242f6), [StorageUI.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Floor/StorageUI.cs), [내 변경 ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc)
+
+### 훈련, 회복과 침식
+
+훈련과 회복, 침식 처리를 구현하고 수정했습니다. 시설 진행은 유닛의 활동 데이터를 읽습니다. 화면 슬롯의 점유만으로 진행을 계산하던 구조를 바꾼 내용은 아래에서 설명합니다.
+
+[GYMSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/GYM/GYMSystem.cs), [내 변경 ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc), [HealthSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Health/HealthSystem.cs), [내 변경 ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc), [ErosionSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Erosion/ErosionSystem.cs), [내 변경 ee56050](https://github.com/YSL-RyuDo/DeathGuider/commit/ee560502e873a71a982aa4722c2f6e409fecadcc)
+
+### 연구와 제작
+
+경영 흐름의 연구소와 제작 시스템을 작업했습니다. 개발 선택과 자원 및 상태 처리를 전투 전에 사용할 장비와 연결했습니다.
+
+[LaboratorySystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Laboratory/LaboratorySystem.cs), [내 변경 4dc54c0](https://github.com/YSL-RyuDo/DeathGuider/commit/4dc54c0e285efdc18888b07019992ddc5fcfcdf2), [SmithSystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/Smith/SmithSystem.cs), [내 변경 4dc54c0](https://github.com/YSL-RyuDo/DeathGuider/commit/4dc54c0e285efdc18888b07019992ddc5fcfcdf2)
+
+### 파티와 장비 준비
+
+전투 유닛과 장비 선택, 비어 있는 파티의 전투 진입을 막는 처리를 작업했습니다. 제가 맡은 경영 흐름을 팀의 탐사와 전투 시스템에 연결하는 경계입니다.
+
+[BattleReadySystem.cs (0.23Ver)](https://github.com/YSL-RyuDo/DeathGuider/blob/4f5139ff4d5fd9f23fe730b9d99023e877c8905e/Assets/Script/MainScene/Lobby%20Test/BattleReadySystem.cs), [내 변경 f8015e0](https://github.com/YSL-RyuDo/DeathGuider/commit/f8015e039aa7e33d9e8355f3d09cd90c786a04c8)
+
 ## 내 기여: 경영 시스템
 
 버스, 수감자 관리, 수감자 목록, 보관과 UI, 데이터 흐름.
@@ -46,12 +80,6 @@
 수감자 상태, 시설, 날짜 진행과 전투 준비가 서로 연결되어야 하는 경영 게임입니다. 전투 준비 단계에서는 빈 파티가 입장하지 못하도록 막아야 합니다.
 
 버스, 수감자, 보관 관리, 훈련, 회복, 침식, 연구소, 대장장이, 전투 준비의 인원, 장비 선택을 담당했습니다. 공동 프로젝트 안에서 작성 커밋으로 해당 변경을 구분합니다.
-
-| 영역 | 구현 |
-|---|---|
-| 경영 | 수감자, 버스 목록과 보관함 데이터 |
-| 진행 | 날짜, 훈련, 회복, 침식, 시설 |
-| 전투 준비 | 유닛, 장비 선택과 빈 파티 입장 방지 |
 
 ## 코드의 동작과 구현 방식을 택한 이유
 
